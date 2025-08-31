@@ -82,6 +82,28 @@ use App\Http\Controllers\SiteManager\FinancialRequisitionController;
 |
  */
 
+Route::get('clear', function () {
+    Artisan::call('cache:clear');
+    Artisan::call('optimize');
+    Artisan::call('route:cache');
+    Artisan::call('route:clear');
+    Artisan::call('view:clear');
+    Artisan::call('config:cache');
+
+    return '<!DOCTYPE html>
+<html>
+<head>
+    <title>Cache Cleared</title>
+    <meta http-equiv="refresh" content="2;url=/">
+</head>
+<body style="font-family: Arial; text-align: center; padding: 50px;">
+    <h1 style="color: #4CAF50;">✓ Cache cleared successfully!</h1>
+    <p>Redirecting to homepage...</p>
+</body>
+</html>';
+});
+
+
 Route::get('/', function () {
     return redirect('home');
 });
@@ -555,7 +577,7 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/share-transfer', [CapitalController::class, 'sharedTransfer'])->name('share-transfer');
     Route::post('/capital-update/{id}', [CapitalController::class, 'updateCapital'])->name('capital-update');
     Route::get('/filter-bank-account', [CapitalController::class, 'filterAccount'])->name('filter-bank-account');
-    
+
     Route::get('/get-heads-by-category', [CapitalController::class, 'getHeadsByCategory']);
     Route::get('/get-accounts-by-bank', [CapitalController::class, 'getAccountsByBank']);
 
@@ -846,7 +868,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/land-sale-employee', [SalesController::class, 'land_sale_employee'])->name('land_sale_employee');
     Route::post('/land-sale-employee-store', [SalesController::class, 'land_sale_employee_store'])->name('land_sale_employee_store');
     Route::post('/land-sale-employee-update/{id}', [SalesController::class, 'update_land_sale_employee'])->name('update_land_sale_employee');
-    
+
     Route::get('/director-wise-employees', [SalesController::class, 'directorWiseEmployees'])->name('director_wise_employees');
     Route::get('/get-employees-by-director/{id}', [SalesController::class, 'getEmployeesByDirector']);
     Route::get('/get-employees-by-coordinator/{id}', [SalesController::class, 'getEmployeesByCoordinator']);
@@ -870,12 +892,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/outsider-coordinator-wise/{directorId}/{selectedCoordinatorId}/', [SalesController::class, 'getOutsidersByCoordinator'])->name('outsider_coordinator_wise');
     Route::get('/outsider-director-wise/{directorId}', [SalesController::class, 'getOutsidersByDirector'])->name('outsider_director_wise');
     Route::get('/customer-statement-list', [SalesController::class, 'customerStatement'])->name('customer-statement-list');
-    
+
     Route::post('/approve-incentives/{land_sale_id}', [SalesController::class, 'approveIncentives'])->name('approve.incentives');
-    
-    
-    
-    
+
+
+
+
     // Landshare Routes
     Route::get('/landshare', [SalesController::class, 'landshareIndex'])->name('landshareindex');
     Route::get('/landshare/create', [SalesController::class, 'landshareCreate'])->name('landsharecreate');
@@ -885,13 +907,13 @@ Route::middleware(['auth'])->group(function () {
     Route::post('/landshare/update/{id}', [SalesController::class, 'landshareUpdate'])->name('landshareupdate');
     Route::delete('/landshare/delete/{id}', [SalesController::class, 'landshareDestroy'])->name('landsharedestroy');
     Route::get('/get-land-data', [SalesController::class, 'getLandData'])->name('getLandData');
-    
-    
-    
+
+
+
     //Report
     Route::get('/income-statement-list', [ReportController::class, 'incomeStatement'])->name('income-statement-list');
     Route::get('/income-statement-list-view', [ReportController::class, 'incomeStatementView'])->name('income-statement-list-view');
-    
+
     Route::get('/receipt_and_payment_statement', [ReportController::class, 'receiptAndPaymentStatement'])->name('receipt_and_payment_statement');
     Route::get('/balance_sheet', [ReportController::class, 'balance_sheet'])->name('balance_sheet');
 });
@@ -933,15 +955,3 @@ Route::prefix('report')->group(function () {
 //System Setting Route
 Route::get('systemsetting', [SystemSettingController::class, 'index'])->name('systemsetting.index');
 Route::post('systemsetting/update', [SystemSettingController::class, 'update'])->name('systemsetting.update');
-
-Route::get('clear', function () {
-    Artisan::call('cache:clear');
-    Artisan::call('optimize');
-    Artisan::call('route:cache');
-    Artisan::call('route:clear');
-    Artisan::call('view:clear');
-    Artisan::call('config:cache');
-
-    return redirect('home');
-    // return redirect()->back();
-});

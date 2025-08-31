@@ -48,137 +48,197 @@
                     </a>
                 </li>
 
-                {{-- <li class="nav-item {{((isset($main_menu) && $main_menu=='hrm')?'menu-open':'')}}">
+                <li class="nav-item {{ isset($main_menu) && $main_menu == 'hrm' ? 'menu-open' : '' }}">
                     <a href="#" class="nav-link">
-                      <i class="nav-icon fas fa-users "></i>
-                      <p>
-                        HRM
-                        <i class="fas fa-angle-left right"></i>
-                      </p>
+                        <i class="nav-icon fas fa-users"></i>
+                        <p>
+                            HRM
+                            <i class="fas fa-angle-left right"></i>
+                        </p>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li>
-                            <a href="{{ route('department-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='department-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Department</p>
-                            </a>
-                        </li>
+
+                        {{-- Organization Setup --}}
                         <li class="nav-item">
-                            <a href="{{ route('branch-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='branch-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Branch Office</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-building"></i>
+                                <p>
+                                    Organization Setup
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li><a href="{{ route('department-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'department-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Department</p>
+                                    </a></li>
+                                <li><a href="{{ route('branch-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'branch-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Branch Office</p>
+                                    </a></li>
+                                <li><a href="{{ route('section-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'section-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Section</p>
+                                    </a></li>
+                                <li><a href="{{ route('designation-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'designation-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Designation</p>
+                                    </a></li>
+                                <li><a href="{{ route('grade-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'grade-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Grade</p>
+                                    </a></li>
+                                <li><a href="{{ route('paymentType-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'paymentType-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Payment Type</p>
+                                    </a></li>
+                                <li><a href="{{ route('schedule-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'schedule-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Schedule</p>
+                                    </a></li>
+                            </ul>
                         </li>
+
+                        {{-- Employee Management --}}
                         <li class="nav-item">
-                            <a href="{{ route('section-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='section-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Section</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-user-tie"></i>
+                                <p>
+                                    Employee Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li><a href="{{ route('employee-create') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'employee-create' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Employee Create</p>
+                                    </a></li>
+                                <li><a href="{{ route('manage-employee') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'manage-employee' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Manage Employee</p>
+                                    </a></li>
+                                <li><a href="{{ route('employee-performance') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'employee-performance' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Employee Performance</p>
+                                    </a></li>
+                            </ul>
                         </li>
+
+                        {{-- Attendance Management --}}
                         <li class="nav-item">
-                            <a href="{{ route('designation-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='designation-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Designation</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-check"></i>
+                                <p>
+                                    Attendance Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li><a href="{{ route('attendance-entry') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'attendance-entry' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Attendance Entry</p>
+                                    </a></li>
+                                <li><a href="{{ route('attendance-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'attendance-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Attendance List</p>
+                                    </a></li>
+                                <li><a href="{{ route('attendance-monthly-report') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'attendance-monthly-report' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Monthly Attendance Report</p>
+                                    </a></li>
+                                <li><a href="{{ route('job-card') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'job-card' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Job Card Details</p>
+                                    </a></li>
+                            </ul>
                         </li>
+
+                        {{-- Leave Management --}}
                         <li class="nav-item">
-                            <a href="{{ route('grade-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='grade-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Grade</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-plane-departure"></i>
+                                <p>
+                                    Leave Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li><a href="{{ route('leave-type-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'leave-type-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Leave Type</p>
+                                    </a></li>
+                                <li><a href="{{ route('leave') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'leave' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Leave Entry</p>
+                                    </a></li>
+                                <li><a href="{{ route('leave-report') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'leave-report' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Leave Report</p>
+                                    </a></li>
+                            </ul>
                         </li>
+
+                        {{-- Salary Management --}}
                         <li class="nav-item">
-                            <a href="{{ route('paymentType-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='paymentType-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Payment Type</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-money-check-alt"></i>
+                                <p>
+                                    Salary Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li><a href="{{ route('employee-salary') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'employee-salary' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Salary Generate</p>
+                                    </a></li>
+                                <li><a href="{{ route('employee-salary-list') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'employee-salary-list' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Salary Report</p>
+                                    </a></li>
+                            </ul>
                         </li>
+
+                        {{-- Holiday Management --}}
                         <li class="nav-item">
-                            <a href="{{ route('schedule-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='schedule-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Schedule</p>
+                            <a href="#" class="nav-link">
+                                <i class="nav-icon fas fa-calendar-day"></i>
+                                <p>
+                                    Holiday Management
+                                    <i class="fas fa-angle-left right"></i>
+                                </p>
                             </a>
+                            <ul class="nav nav-treeview">
+                                <li><a href="{{ route('holiday') }}"
+                                        class="nav-link {{ isset($child_menu) && $child_menu == 'holiday' ? 'active' : '' }}"><i
+                                            class="far fa-circle nav-icon"></i>
+                                        <p>Holiday</p>
+                                    </a></li>
+                            </ul>
                         </li>
-                        <li class="nav-item">
-                            <a href="{{ route('employee-create') }}" class="nav-link {{((isset($child_menu) && $child_menu=='employee-create')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Employee Create</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('manage-employee') }}" class="nav-link {{((isset($child_menu) && $child_menu=='manage-employee')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Manage Employee</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('employee-performance')}}" class="nav-link {{((isset($child_menu) && $child_menu=='employee-performance')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Employee Performance</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('attendance-entry')}}" class="nav-link {{((isset($child_menu) && $child_menu=='attendance-entry')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Attendance Entry</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('attendance-list')}}" class="nav-link {{((isset($child_menu) && $child_menu=='attendance-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Attendance List</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('attendance-monthly-report')}}" class="nav-link {{((isset($child_menu) && $child_menu=='attendance-monthly-report')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Monthly Attendance Report</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('job-card')}}" class="nav-link {{((isset($child_menu) && $child_menu=='job-card')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Job Card Details</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('holiday') }}" class="nav-link {{((isset($child_menu) && $child_menu=='holiday')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Holiday</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('leave-type-list') }}" class="nav-link {{((isset($child_menu) && $child_menu=='leave-type-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Leave Type</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('leave') }}" class="nav-link {{((isset($child_menu) && $child_menu=='leave')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Leave Entry</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('leave-report') }}" class="nav-link {{((isset($child_menu) && $child_menu=='leave-report')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Leave Report</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('employee-salary')}}" class="nav-link {{((isset($child_menu) && $child_menu=='employee-salary')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Salary Generate</p>
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{route('employee-salary-list')}}" class="nav-link {{((isset($child_menu) && $child_menu=='employee-salary-list')?'active':'')}}">
-                                <i class="far fa-circle nav-icon"></i>
-                                <p>Salary Report</p>
-                            </a>
-                        </li>
+
                     </ul>
-                </li> --}}
+                </li>
+
 
                 @if (array_search('income', array_column($menu_permission, 'menu_slug')) !== false)
                     <li
@@ -347,7 +407,8 @@
                                             <p>Payable Due Amount</p>
                                         </a>
                                     </li>
-                                    <li class="nav-item {{ request()->is('receipt_and_payment_statement') ? 'menu-open' : '' }}">
+                                    <li
+                                        class="nav-item {{ request()->is('receipt_and_payment_statement') ? 'menu-open' : '' }}">
                                         <a href="{{ route('receipt_and_payment_statement') }}"
                                             class="nav-link {{ isset($child_menu) && $child_menu == 'receipt_and_payment_statement' ? 'active' : '' }}">
                                             <i class="far fa-dot-circle nav-icon"></i>
@@ -723,8 +784,8 @@
                     <a href="#" class="nav-link">
                         <i class="fas fa-database  nav-icon"></i>
                         <p>
-                        Capital
-                        <i class="right fas fa-angle-left"></i>
+                            Capital
+                            <i class="right fas fa-angle-left"></i>
                         </p>
                     </a>
                     <ul class="nav nav-treeview">
@@ -735,13 +796,15 @@
                             </a>
                         </li> --}}
                         <li class="nav-item">
-                            <a href="{{ route('capital-list') }}" class="nav-link {{ isset($child_menu) && $child_menu == 'capital-list' ? 'active' : '' }}">
+                            <a href="{{ route('capital-list') }}"
+                                class="nav-link {{ isset($child_menu) && $child_menu == 'capital-list' ? 'active' : '' }}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Capital</p>
                             </a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('transfer-index') }}" class="nav-link {{ isset($child_menu) && $child_menu == 'capital_transfer' ? 'active' : '' }}">
+                            <a href="{{ route('transfer-index') }}"
+                                class="nav-link {{ isset($child_menu) && $child_menu == 'capital_transfer' ? 'active' : '' }}">
                                 <i class="far fa-dot-circle nav-icon"></i>
                                 <p>Capital Transfer</p>
                             </a>
@@ -1300,9 +1363,10 @@
                                     </li>
                                 </ul>
                             </li>
-                            
-                            
-                            <li class="nav-item {{ isset($child_menu) && in_array($child_menu, ['landshare_index', 'landshare_create', 'landshare_edit', 'landshare_show']) ? 'menu-open' : '' }}">
+
+
+                            <li
+                                class="nav-item {{ isset($child_menu) && in_array($child_menu, ['landshare_index', 'landshare_create', 'landshare_edit', 'landshare_show']) ? 'menu-open' : '' }}">
                                 <a href="#"
                                     class="nav-link {{ isset($child_menu) && in_array($child_menu, ['landshare_index', 'landshare_create', 'landshare_edit', 'landshare_show']) ? 'active' : '' }}">
                                     <i class="far fa-circle nav-icon"></i>
@@ -1321,9 +1385,9 @@
                                     </li>
                                 </ul>
                             </li>
-                            
-                            
-                            
+
+
+
                             <li>
                                 <a href="{{ route('create_application_form') }}"
                                     class="nav-link  {{ isset($child_menu) && $child_menu == 'application_form' ? 'active' : '' }}">
@@ -1379,7 +1443,8 @@
                         <i class="fas fa-angle-left right"></i>
                     </a>
                     <ul class="nav nav-treeview">
-                        <li class="nav-item {{ request()->is('save-land-purchase','land-purchase') ? 'menu-open' : '' }}">
+                        <li
+                            class="nav-item {{ request()->is('save-land-purchase', 'land-purchase') ? 'menu-open' : '' }}">
                             <a href="{{ route('land.purchase') }}"
                                 class="nav-link  {{ isset($child_menu) && $child_menu == 'land_purchase_create' ? 'active' : '' }}">
                                 <i class="far fa-circle nav-icon"></i>

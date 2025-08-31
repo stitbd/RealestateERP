@@ -111,7 +111,7 @@
                                     <button type="submit" class="btn btn-primary">Filter</button>
                                     <a href="{{ route('sales_related_incentive') }}" class="btn btn-secondary">Reset</a>
                                     <button onclick="printTable()" class="btn btn-success" {{ !request('start_date') && !request('end_date') ? 'disabled' : '' }}>Print</button>
-                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#totalSheetModal" {{ !request('start_date') && !request('end_date') ? 'disabled' : '' }}>Top Seat</button>
+                                    <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#totalSheetModal" {{ !request('start_date') && !request('end_date') ? 'disabled' : '' }}>Top Sheet</button>
                                 </div>
                             </div>
                         </form>
@@ -125,7 +125,7 @@
     @if(request('start_date') || request('end_date'))
         <div id="printableArea" class="p-4">
             <div class="report-header text-center">
-                <h2 class="company-name text-uppercase font-weight-bold" style="color: #2c3e50; font-size: 28px;">Unity Landmark Limited</h2>
+                <h2 class="company-name text-uppercase font-weight-bold" style="color: #2c3e50; font-size: 28px;">{{ Session::get('company_name') }}</h2>
                 <h4 class="report-title font-weight-bold" style="color: #3498db; border-bottom: 2px solid #3498db; display: inline-block;">Monthly Incentive Report</h4>
                 <div class="period-info">
                     <p class="period bg-light p-2 rounded d-inline-block">
@@ -276,7 +276,7 @@
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header bg-info">
-                        <h5 class="modal-title" id="totalSheetModalLabel">Top Seat</h5>
+                        <h5 class="modal-title" id="totalSheetModalLabel">Top Sheet</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
@@ -284,8 +284,8 @@
                     <div class="modal-body">
                         <div id="printableTotalSheet">
                             <div class="report-header text-center">
-                                <h2 class="company-name text-uppercase font-weight-bold" style="color: #2c3e50; font-size: 28px;">Unity Landmark Limited</h2>
-                                <h4 class="report-title font-weight-bold" style="color: #3498db; border-bottom: 2px solid #3498db; display: inline-block;">Monthly Top Seat Report</h4>
+                                <h2 class="company-name text-uppercase font-weight-bold" style="color: #2c3e50; font-size: 28px;">{{ Session::get('company_name') }}</h2>
+                                <h4 class="report-title font-weight-bold" style="color: #3498db; border-bottom: 2px solid #3498db; display: inline-block;">Monthly Top Sheet Report</h4>
                                 <div class="period-info">
                                     <p class="period bg-light p-2 rounded d-inline-block">
                                         <strong>Period:</strong>
@@ -306,7 +306,7 @@
                                             <th class="text-right">Amount (Tk.)</th>
                                         </tr>
                                     </thead>
-                                    <tbody id="topSeatTableBody">
+                                    <tbody id="topSheetTableBody">
                                         @foreach(['directors', 'coordinators', 'shareholders', 'outsiders'] as $group)
                                             @if(isset($allTotals[$group]) && !empty($allTotals[$group]))
                                                 @foreach($allTotals[$group] as $name => $total)
@@ -411,8 +411,8 @@
                     // Update SL numbers
                     updateSerialNumbers();
 
-                    // Update Top Seat Report
-                    updateTopSeatReport();
+                    // Update Top Sheet Report
+                    updateTopSheetReport();
                 });
             });
 
@@ -428,16 +428,16 @@
                 });
             }
 
-            function updateTopSeatReport() {
-                // Get all rows in Top Seat Report
-                const topSeatRows = document.querySelectorAll('#topSeatTableBody tr');
+            function updateTopSheetReport() {
+                // Get all rows in Top Sheet Report
+                const topSheetRows = document.querySelectorAll('#topSheetTableBody tr');
 
                 // Calculate new totals
                 let newTotals = {};
                 let grandTotal = 0;
 
                 // Initialize new totals with original values
-                topSeatRows.forEach(row => {
+                topSheetRows.forEach(row => {
                     const group = row.getAttribute('data-group');
                     const name = row.getAttribute('data-name');
                     const originalTotal = parseFloat(row.getAttribute('data-total'));
@@ -458,8 +458,8 @@
                     }
                 }
 
-                // Update Top Seat Report
-                topSeatRows.forEach(row => {
+                // Update Top Sheet Report
+                topSheetRows.forEach(row => {
                     const group = row.getAttribute('data-group');
                     const name = row.getAttribute('data-name');
 
@@ -1288,7 +1288,7 @@
             printWindow.document.write(`
                 <html>
                     <head>
-                        <title>Top Seat Report</title>
+                        <title>Top Sheet Report</title>
                         <style>
                             body { font-family: Arial, sans-serif; }
                             table { width: 100%; border-collapse: collapse; }

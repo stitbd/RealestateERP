@@ -122,7 +122,7 @@
                 <img src="{{ asset('image/logo.png') }}" alt="" height="auto" width="300px">
             </div>
             <div class="col-sm-7">
-                <h1 class="h1">Unity Landmark Limited</h1>
+                <h1 class="h1">{{ Session::get('company_name') }}</h1>
                 <h6>Plot - 04, Main Road, Mirpur-1, Dhaka-1216.</h6>
             </div>
         </div>
@@ -259,7 +259,7 @@
                 <img src="{{ asset('image/logo.png') }}" alt="" height="auto" width="300px">
             </div>
             <div class="col-sm-7">
-               <h1 class="h1">Unity Landmark Limited</h1>
+               <h1 class="h1">{{ Session::get('company_name') }}</h1>
                 <h6>Plot - 04, Main Road, Mirpur-1, Dhaka-1216.</h6>
             </div>
         </div>
