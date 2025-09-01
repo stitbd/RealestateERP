@@ -45,7 +45,7 @@ class UserController extends Controller
 
     public function save_permission(Request $request)
     {
-        //dd($request);
+        // dd($request->all());
         $validator = Validator::make($request->all(),[
             'role' => 'required',
             'menu' => 'required'
